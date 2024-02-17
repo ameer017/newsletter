@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,100&display=swap');
+
 .desktop{
     position: absolute;
     transform: translate(-50%, -50%);
@@ -17,6 +18,7 @@
     .phone {
         display: none;
     }
+
     .text {
         display: flex;
         flex-direction: column;
@@ -34,7 +36,6 @@
         }
 
         .contain {
-            // margin-top: .8rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -63,6 +64,15 @@
             font-size: 12px;
         }
 
+        .errorInp {
+            border-color: orangered;
+            background-color: rgb(207, 177, 166);
+        }
+
+        .errorInp::placeholder {
+            color: orangered;
+        }
+
         input:hover{
             border: 1px solid grey;
             transition-duration: 500ms;
@@ -86,10 +96,11 @@
     }
 
     .image {
-        padding: 1rem .2rem;
+        padding: 1rem .1rem;
+
         
         img {
-            width: 210px;
+            width: 260px;
             margin-left: 1.2rem;
         }
     }
@@ -116,4 +127,4 @@
         }
     }
             
-  }
+}

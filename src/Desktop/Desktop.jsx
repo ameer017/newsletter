@@ -1,24 +1,26 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './Desktop.scss'
-import {AiFillCheckCircle} from 'react-icons/ai'
 import reactLogo from '../assets/illustration-sign-up-desktop.svg'
 import reactLogotwo from '../assets/illustration-sign-up-mobile.svg'
 import reactLogothree from '../assets/icon-list.svg'
+import { useNavigate } from 'react-router-dom'
 
-const Desktop = (props) => {
+const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+const Desktop = () => {
+    const navigate = useNavigate()
     const [email, setEmail] = useState('')
-    const [isValid, setIsValid] = useState(false)
+    const [isValid, setIsValid] = useState(true)
 
-    const validateEmail = () => {
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    useEffect(() => {
         setIsValid(regex.test(email))
-
-    }
+      }, [email])
 
     const handleInputChange = (e) => {
-        setEmail(props.e.target.value)
+        e.preventDefault()
+        setEmail(e.target.value)
     }
+
   return (
     <div className='desktop'>
 
@@ -50,7 +52,7 @@ const Desktop = (props) => {
                 <div className='error'>
                     {
                         isValid ? 
-                    <small style={{color: 'green'}}>Email is valid.</small> 
+                    <small></small> 
                             :
                     <small style={{color: 'red'}}>Valid email required.</small>
                     }
@@ -59,7 +61,7 @@ const Desktop = (props) => {
 
             <input type='email' placeholder='email@company.com' onChange={handleInputChange}/>
 
-            <button type='submit' onClick={validateEmail}>Subscribe to monthly newsletter</button>
+            <button type='submit' >Subscribe to monthly newsletter</button>
         </div>
         <div className='image'>
             <img src={reactLogo} alt='image'/>
